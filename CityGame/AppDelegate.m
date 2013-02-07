@@ -9,6 +9,13 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize gameID;
+@synthesize intervalHunter;
+@synthesize intervalPrey;
+@synthesize playerID;
+@synthesize role;
+@synthesize lastTask;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
