@@ -37,23 +37,24 @@ bool internetConnection;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 	// Do any additional setup after loading the view, typically from a nib.
     self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
+    
     
     // the interval with which all locations will be updated
     int seconds = 10;
-    //NSTimer *interval =
-    // boolean that will hold whether an uploaded image was approved or not
-    Boolean approved = true;
-    if (approved==true){
-        [NSTimer scheduledTimerWithTimeInterval:seconds target:self
+
+    [NSTimer scheduledTimerWithTimeInterval:seconds target:self
                                        selector:@selector(tick) userInfo:nil repeats:YES];
-    }
     //database aanmaken indien nodig
     dbConnection = [[SqliteDb alloc]init];
     [dbConnection createDB];
     
     internetCon = [[CheckInternetConnection alloc] init];
+    
+    [self showLocation];
 }
 
 -(void)clear{
@@ -64,7 +65,7 @@ bool internetConnection;
 -(void)tick{
     NSDate *methodStart = [NSDate date];
     
-    // calls the function to empty the map
+    // roept de functie op om de map leeg te maken
     [self clear];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -72,43 +73,55 @@ bool internetConnection;
     internetConnection = [internetCon isConnectionAvailable];
     //als er geen internet connectie is moeten den punten in een sqlite databank opgeslagen worden
     if(internetConnection==TRUE){
-        // makes the background queue and calls the fetched data function for the hunters
-        dispatch_async(kBgQueue, ^{
-            NSData* data = [NSData dataWithContentsOfURL:
-                            [NSURL URLWithString:[NSString stringWithFormat:@"http://webservice.citygamephl.be/CityGameWS/resources/generic/getLocations/%@/%@/Jager",appDelegate.gameID, appDelegate.playerID]]];
+        if (([appDelegate.approved isEqualToString:@"true"]) || ([appDelegate.role isEqualToString:@"Jager"])){
+            // maakt de background queue aan en vraagt de locaties op van de jagers
+            dispatch_async(kBgQueue, ^{
+                NSData* data = [NSData dataWithContentsOfURL:
+                                [NSURL URLWithString:[NSString stringWithFormat:@"http://webservice.citygamephl.be/CityGameWS/resources/generic/getLocations/%@/%@/Jager",appDelegate.gameID, appDelegate.playerID]]];
             
-            //times how long fetching the data cost
-            NSDate *methodEnd = [NSDate date];
-            NSTimeInterval executionTime = [methodEnd timeIntervalSinceDate:methodStart];
-            [LogViewController logMethodDuration:executionTime :@"jagers opvragen"];
+                //timen hoe lang het duurde om de data op te halen
+                NSTimeInterval executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
+                [LogViewController logMethodDuration:executionTime :@"jagers opvragen"];
             
             
-            [self performSelectorOnMainThread:@selector(hunterData:) withObject:data waitUntilDone:YES];
+                [self performSelectorOnMainThread:@selector(hunterData:) withObject:data waitUntilDone:YES];
             
-            // times how long displaying the data cost
-            methodEnd = [NSDate date];
-            executionTime = [methodEnd timeIntervalSinceDate:methodStart];
-            [LogViewController logMethodDuration:executionTime :@"Totaal jagers"];
-        });
-        
+                // timen hoe lang het duurde om de data ook te tonen
+                executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
+                [LogViewController logMethodDuration:executionTime :@"Totaal jagers"];
+            });
+        }
         methodStart = [NSDate date];
         
-        // sets up the prey connection
-        dispatch_async(kBgQueue, ^{
-            NSData* data = [NSData dataWithContentsOfURL:
-                            [NSURL URLWithString:[NSString stringWithFormat:@"http://webservice.citygamephl.be/CityGameWS/resources/generic/getLocations/%@/%@/Prooi",appDelegate.gameID, appDelegate.playerID]]];
-            NSDate *methodEnd = [NSDate date];
-            NSTimeInterval executionTime = [methodEnd timeIntervalSinceDate:methodStart];
-            [LogViewController logMethodDuration:executionTime :@"prooi opvragen"];
-            [self performSelectorOnMainThread:@selector(preyData:) withObject:data waitUntilDone:YES];
+        if (([appDelegate.approved isEqualToString:@"true"])&&([appDelegate.role isEqualToString:@"Jager"])){
+            // maakt de connectie voor de locatie van de prooi
+            dispatch_async(kBgQueue, ^{
+                NSData* data = [NSData dataWithContentsOfURL:
+                                [NSURL URLWithString:[NSString stringWithFormat:@"http://webservice.citygamephl.be/CityGameWS/resources/generic/getLocations/%@/%@/Prooi",appDelegate.gameID, appDelegate.playerID]]];
+
+                NSTimeInterval executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
+                [LogViewController logMethodDuration:executionTime :@"prooi opvragen"];
+                [self performSelectorOnMainThread:@selector(preyData:) withObject:data waitUntilDone:YES];
             
-            // times how long displaying the data cost
-            methodEnd = [NSDate date];
-            executionTime = [methodEnd timeIntervalSinceDate:methodStart];
-            [LogViewController logMethodDuration:executionTime :@"Totaal prooi"];
-        });
+                // timen hoe lang het duurde voor de data te tonen
+                executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
+                [LogViewController logMethodDuration:executionTime :@"Totaal prooi"];
+            });
+        }
+        [self setTask];
     }
-    
+    /*MKUserLocation *user;
+    user.coordinate = _userLocation;
+    //titel en subtitel geven aan het punt
+    user.title = @"Hier ben ik";
+    [self.mapView addAnnotation: user];
+     
+     
+     MKUserLocation *user = [[MKUserLocation alloc] init];
+     user.coordinate = _userLocation;
+     
+     // add your annotation
+     [self.mapView addAnnotation: user];*/
 }
 
 - (void)hunterData:(NSData *)responseData {
@@ -173,6 +186,20 @@ bool internetConnection;
     }
 }
 
+- (void)setTask{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    
+    if (appDelegate.taskLongitude!=NULL){
+        //Punt toevoegen aan de kaart
+        point.coordinate = CLLocationCoordinate2DMake(appDelegate.taskLatitude.doubleValue, appDelegate.taskLongitude.doubleValue);
+        //titel en subtitel geven aan het punt
+        point.title = @"Opdracht";
+        point.subtitle = appDelegate.taskDescription;
+    }
+    [self.mapView addAnnotation:point];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -195,14 +222,7 @@ bool internetConnection;
 {
     _userLocation = userLocation.coordinate;
     
-    //Punt toevoegen aan de kaart
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = CLLocationCoordinate2DMake(50.9377, 5.3458);
-    //titel en subtitel geven aan het punt
-    point.title = @"Me";
-    point.subtitle = @"You are here!";
     
-    [self.mapView addAnnotation:point];
     internetConnection = [internetCon isConnectionAvailable];
     //als er geen internet connectie is moeten den punten in een sqlite databank opgeslagen worden
     if(internetConnection!=TRUE){

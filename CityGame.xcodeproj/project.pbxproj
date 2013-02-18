@@ -36,6 +36,8 @@
 		27F5EEFA167CC35F00F322A0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27F5EEF8167CC35F00F322A0 /* InfoPlist.strings */; };
 		27F5EEFD167CC35F00F322A0 /* CityGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5EEFC167CC35F00F322A0 /* CityGameTests.m */; };
 		27F5EF09167CCFD900F322A0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F5EF08167CCFD900F322A0 /* MobileCoreServices.framework */; };
+		680C722A16CE7D0E00A8F975 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680C722916CE7D0E00A8F975 /* InfoViewController.m */; };
+		680C722B16CE7D0E00A8F975 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680C722916CE7D0E00A8F975 /* InfoViewController.m */; };
 		6817F05816B9D41D009DB636 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6817F04316B9D41D009DB636 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6817F05916B9D41D009DB636 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6817F04316B9D41D009DB636 /* Reachability.m */; };
 		6817F05A16B9D41D009DB636 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6817F04516B9D41D009DB636 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -75,6 +77,12 @@
 		681E1E9616C2631100E0723A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 681E1E9516C2631100E0723A /* libsqlite3.dylib */; };
 		681E1E9916C2814300E0723A /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 681E1E9816C2814300E0723A /* TaskViewController.m */; };
 		681E1E9A16C2814300E0723A /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 681E1E9816C2814300E0723A /* TaskViewController.m */; };
+		682AF37716C3D779006B21D2 /* HunterFotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682AF37616C3D779006B21D2 /* HunterFotoViewController.m */; };
+		682AF37816C3D779006B21D2 /* HunterFotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682AF37616C3D779006B21D2 /* HunterFotoViewController.m */; };
+		682AF37B16C3E050006B21D2 /* PreyChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682AF37A16C3E050006B21D2 /* PreyChatViewController.m */; };
+		682AF37C16C3E050006B21D2 /* PreyChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682AF37A16C3E050006B21D2 /* PreyChatViewController.m */; };
+		6838396A16CA9EC3002861F1 /* TabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6838396916CA9EC3002861F1 /* TabController.m */; };
+		6838396B16CA9EC3002861F1 /* TabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6838396916CA9EC3002861F1 /* TabController.m */; };
 		68ADED7516B9B1070087F2B2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 68ADED7416B9B1070087F2B2 /* libz.dylib */; };
 		68ADED7716B9B11A0087F2B2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68ADED7616B9B11A0087F2B2 /* CFNetwork.framework */; };
 		68ADED7916B9B1330087F2B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68ADED7816B9B1330087F2B2 /* SystemConfiguration.framework */; };
@@ -132,6 +140,8 @@
 		27F5EEFB167CC35F00F322A0 /* CityGameTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityGameTests.h; sourceTree = "<group>"; };
 		27F5EEFC167CC35F00F322A0 /* CityGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityGameTests.m; sourceTree = "<group>"; };
 		27F5EF08167CCFD900F322A0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		680C722816CE7D0E00A8F975 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		680C722916CE7D0E00A8F975 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		6817F04216B9D41D009DB636 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		6817F04316B9D41D009DB636 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		6817F04416B9D41D009DB636 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -174,6 +184,12 @@
 		681E1E9516C2631100E0723A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		681E1E9716C2814300E0723A /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
 		681E1E9816C2814300E0723A /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
+		682AF37516C3D779006B21D2 /* HunterFotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HunterFotoViewController.h; sourceTree = "<group>"; };
+		682AF37616C3D779006B21D2 /* HunterFotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HunterFotoViewController.m; sourceTree = "<group>"; };
+		682AF37916C3E050006B21D2 /* PreyChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreyChatViewController.h; sourceTree = "<group>"; };
+		682AF37A16C3E050006B21D2 /* PreyChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreyChatViewController.m; sourceTree = "<group>"; };
+		6838396816CA9EC3002861F1 /* TabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabController.h; sourceTree = "<group>"; };
+		6838396916CA9EC3002861F1 /* TabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabController.m; sourceTree = "<group>"; };
 		68ADED7416B9B1070087F2B2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		68ADED7616B9B11A0087F2B2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		68ADED7816B9B1330087F2B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -273,6 +289,10 @@
 				27F5EECC167CC35F00F322A0 /* AppDelegate.h */,
 				27F5EECD167CC35F00F322A0 /* AppDelegate.m */,
 				27F5EED5167CC35F00F322A0 /* MainStoryboard_iPhone.storyboard */,
+				6838396816CA9EC3002861F1 /* TabController.h */,
+				6838396916CA9EC3002861F1 /* TabController.m */,
+				682AF37916C3E050006B21D2 /* PreyChatViewController.h */,
+				682AF37A16C3E050006B21D2 /* PreyChatViewController.m */,
 				27F5EED8167CC35F00F322A0 /* MainStoryboard_iPad.storyboard */,
 				27F5EEDE167CC35F00F322A0 /* first.png */,
 				27F5EEE0167CC35F00F322A0 /* first@2x.png */,
@@ -290,6 +310,10 @@
 				681E1E7116C24D0F00E0723A /* MapViewController.m */,
 				681E1E9716C2814300E0723A /* TaskViewController.h */,
 				681E1E9816C2814300E0723A /* TaskViewController.m */,
+				682AF37516C3D779006B21D2 /* HunterFotoViewController.h */,
+				682AF37616C3D779006B21D2 /* HunterFotoViewController.m */,
+				680C722816CE7D0E00A8F975 /* InfoViewController.h */,
+				680C722916CE7D0E00A8F975 /* InfoViewController.m */,
 			);
 			path = CityGame;
 			sourceTree = "<group>";
@@ -529,6 +553,10 @@
 				681E1E8E16C2509300E0723A /* SqliteDb.m in Sources */,
 				681E1E9016C2509300E0723A /* CheckInternetConnection.m in Sources */,
 				681E1E9916C2814300E0723A /* TaskViewController.m in Sources */,
+				682AF37716C3D779006B21D2 /* HunterFotoViewController.m in Sources */,
+				682AF37B16C3E050006B21D2 /* PreyChatViewController.m in Sources */,
+				6838396A16CA9EC3002861F1 /* TabController.m in Sources */,
+				680C722A16CE7D0E00A8F975 /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +583,10 @@
 				681E1E9116C2509300E0723A /* CheckInternetConnection.m in Sources */,
 				681E1E9416C2510800E0723A /* WebserviceConnection.m in Sources */,
 				681E1E9A16C2814300E0723A /* TaskViewController.m in Sources */,
+				682AF37816C3D779006B21D2 /* HunterFotoViewController.m in Sources */,
+				682AF37C16C3E050006B21D2 /* PreyChatViewController.m in Sources */,
+				6838396B16CA9EC3002861F1 /* TabController.m in Sources */,
+				680C722B16CE7D0E00A8F975 /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

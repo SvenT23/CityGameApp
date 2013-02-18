@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KWe-vL-GoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1133" y="-1975"/>
+            <point key="canvasLocation" x="1105" y="-1955"/>
         </scene>
         <!--Task View Controller - Opdracht-->
         <scene sceneID="ysW-OA-0Pt">
@@ -88,56 +88,166 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGi-s9-B1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1147" y="-1189"/>
+            <point key="canvasLocation" x="1105" y="-1300"/>
         </scene>
-        <!--View Controller - Item 2-->
+        <!--Prey Chat View Controller - Chat-->
         <scene sceneID="Lw8-ne-tQC">
             <objects>
-                <viewController id="DKI-qv-FJ2" sceneMemberID="viewController">
+                <viewController id="DKI-qv-FJ2" customClass="PreyChatViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZbT-56-rs9">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="1L1-Qz-3Rr">
+                                <items>
+                                    <barButtonItem title="Jagers" id="0oS-lc-xZW">
+                                        <connections>
+                                            <action selector="btnHunter:" destination="DKI-qv-FJ2" id="F5F-HJ-uA1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Spelleider" id="1Ii-JP-0Qb">
+                                        <connections>
+                                            <action selector="btnLeader:" destination="DKI-qv-FJ2" id="9uC-DP-M89"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" placeholder="Typ hier" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lDY-W9-Tga">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="chatInputEnd:" destination="DKI-qv-FJ2" eventType="editingDidEndOnExit" id="du5-tL-8Ac"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3X-fb-zeL">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="324" id="U5l-Dr-V8o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W3X-fb-zeL" firstAttribute="leading" secondItem="ZbT-56-rs9" secondAttribute="leading" type="default" id="4KJ-Pi-pIQ"/>
+                            <constraint firstItem="1L1-Qz-3Rr" firstAttribute="leading" secondItem="ZbT-56-rs9" secondAttribute="leading" type="default" id="4uh-Yk-t7d"/>
+                            <constraint firstItem="1L1-Qz-3Rr" firstAttribute="top" secondItem="ZbT-56-rs9" secondAttribute="top" type="default" id="5N6-hS-P4G"/>
+                            <constraint firstItem="lDY-W9-Tga" firstAttribute="leading" secondItem="ZbT-56-rs9" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="AXU-1w-qUU"/>
+                            <constraint firstItem="W3X-fb-zeL" firstAttribute="trailing" secondItem="ZbT-56-rs9" secondAttribute="trailing" type="default" id="DPG-qb-16x"/>
+                            <constraint firstAttribute="trailing" secondItem="lDY-W9-Tga" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Qun-QP-pf4"/>
+                            <constraint firstItem="1L1-Qz-3Rr" firstAttribute="trailing" secondItem="ZbT-56-rs9" secondAttribute="trailing" type="default" id="R3Z-Vd-aFe"/>
+                            <constraint firstItem="lDY-W9-Tga" firstAttribute="top" secondItem="ZbT-56-rs9" secondAttribute="top" constant="55" id="bmm-6m-eQe"/>
+                            <constraint firstItem="W3X-fb-zeL" firstAttribute="bottom" secondItem="ZbT-56-rs9" secondAttribute="bottom" type="default" id="lE2-kG-bKR"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="8WV-V7-u2W"/>
+                    <tabBarItem key="tabBarItem" title="Chat" id="8WV-V7-u2W"/>
+                    <connections>
+                        <outlet property="btnHunter" destination="0oS-lc-xZW" id="8rD-Kf-mZa"/>
+                        <outlet property="btnLeader" destination="1Ii-JP-0Qb" id="PmR-b8-WU9"/>
+                        <outlet property="txtChatInput" destination="lDY-W9-Tga" id="qtc-83-hYx"/>
+                        <outlet property="txtChatbox" destination="W3X-fb-zeL" id="xcM-aE-5C3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDZ-Th-7t6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="129"/>
+            <point key="canvasLocation" x="1105" y="124"/>
         </scene>
-        <!--View Controller - Item 1-->
+        <!--Info View Controller - Info-->
+        <scene sceneID="CgO-vR-a0h">
+            <objects>
+                <viewController id="8cR-hP-O3T" customClass="InfoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bSI-Oy-V0t">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdh-bJ-phF">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pdh-bJ-phF" firstAttribute="leading" secondItem="bSI-Oy-V0t" secondAttribute="leading" type="default" id="31J-Cz-NNi"/>
+                            <constraint firstItem="pdh-bJ-phF" firstAttribute="bottom" secondItem="bSI-Oy-V0t" secondAttribute="bottom" type="default" id="ZmQ-Qz-wz9"/>
+                            <constraint firstItem="pdh-bJ-phF" firstAttribute="top" secondItem="bSI-Oy-V0t" secondAttribute="top" type="default" id="caw-oT-J9u"/>
+                            <constraint firstItem="pdh-bJ-phF" firstAttribute="trailing" secondItem="bSI-Oy-V0t" secondAttribute="trailing" type="default" id="mLl-WP-0wQ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Info" id="uAo-xJ-Le7"/>
+                    <connections>
+                        <outlet property="txtInfo" destination="pdh-bJ-phF" id="Zif-Sq-Xf0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xdg-Cs-fwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="791"/>
+        </scene>
+        <!--Hunter Foto View Controller - Foto-->
         <scene sceneID="z9L-nz-w77">
             <objects>
-                <viewController id="3aS-2b-Zhm" sceneMemberID="viewController">
+                <viewController id="3aS-2b-Zhm" customClass="HunterFotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ec8-lB-8L5">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="LogoGroep01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="p7d-K2-2gm"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="ARR-uB-ssk">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ZTd-li-RQx"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Nieuwe foto" id="EvE-qs-AVf">
+                                        <connections>
+                                            <action selector="btnPhoto:" destination="3aS-2b-Zhm" id="SnT-cV-91S"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Album" id="fCO-qW-V2g">
+                                        <connections>
+                                            <action selector="btnPicker:" destination="3aS-2b-Zhm" id="5hR-Vg-V8Z"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem enabled="NO" title="Verzenden" id="AL1-gj-izv">
+                                        <connections>
+                                            <action selector="btnSend:" destination="3aS-2b-Zhm" id="Cad-R8-yRu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jMO-00-rtG">
+                                <segments>
+                                    <segment title="Opdracht"/>
+                                    <segment title="Groep"/>
+                                    <segment title="Prooi"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="p7d-K2-2gm" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0wN-og-u0b"/>
+                            <constraint firstItem="jMO-00-rtG" firstAttribute="leading" secondItem="Ec8-lB-8L5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Aq6-cz-LzR"/>
+                            <constraint firstItem="p7d-K2-2gm" firstAttribute="top" secondItem="ARR-uB-ssk" secondAttribute="bottom" type="default" id="HZb-Ow-M8b"/>
+                            <constraint firstItem="p7d-K2-2gm" firstAttribute="leading" secondItem="Ec8-lB-8L5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K94-H3-bNl"/>
+                            <constraint firstItem="ARR-uB-ssk" firstAttribute="top" secondItem="Ec8-lB-8L5" secondAttribute="top" type="default" id="YRe-u4-s8L"/>
+                            <constraint firstItem="ARR-uB-ssk" firstAttribute="trailing" secondItem="Ec8-lB-8L5" secondAttribute="trailing" type="default" id="gKt-od-kfC"/>
+                            <constraint firstAttribute="bottom" secondItem="p7d-K2-2gm" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="hAW-0a-QjE"/>
+                            <constraint firstItem="ARR-uB-ssk" firstAttribute="leading" secondItem="Ec8-lB-8L5" secondAttribute="leading" type="default" id="qbD-bN-nDG"/>
+                            <constraint firstAttribute="trailing" secondItem="jMO-00-rtG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="tRK-b4-KgW"/>
+                            <constraint firstItem="jMO-00-rtG" firstAttribute="top" secondItem="Ec8-lB-8L5" secondAttribute="top" constant="51" id="wbp-OI-dou"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="V2z-UJ-w2F"/>
+                    <tabBarItem key="tabBarItem" title="Foto" id="V2z-UJ-w2F"/>
+                    <connections>
+                        <outlet property="btnSend" destination="AL1-gj-izv" id="mTC-BA-Fat"/>
+                        <outlet property="imageView" destination="p7d-K2-2gm" id="tYX-NJ-JA0"/>
+                        <outlet property="segment" destination="jMO-00-rtG" id="6YZ-iE-hyj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="COX-Wn-o6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="942" y="-524"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="d0P-oG-Kgm">
-            <objects>
-                <tabBarController definesPresentationContext="YES" id="nO5-BG-tHp" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="6Yw-J6-aQ9">
-                        <rect key="frame" x="129" y="330" width="163" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="3aS-2b-Zhm" kind="relationship" relationship="viewControllers" id="9fn-Hm-BF8"/>
-                        <segue destination="DKI-qv-FJ2" kind="relationship" relationship="viewControllers" id="BWP-Ow-lA4"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eT7-FB-EBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="538" y="-183"/>
+            <point key="canvasLocation" x="598" y="-271"/>
         </scene>
         <!--Second View Controller - Foto-->
         <scene sceneID="13">
@@ -158,7 +268,7 @@
                                             <action selector="btnPhoto:" destination="3" id="Ear-RI-ISF"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Foto's" id="TKS-Ta-iIO">
+                                    <barButtonItem title="Album" id="TKS-Ta-iIO">
                                         <connections>
                                             <action selector="btnPicker:" destination="3" id="Nlb-UZ-Ngm"/>
                                         </connections>
@@ -182,7 +292,7 @@
                             <constraint firstItem="0oz-Fr-9tF" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="yfG-iW-PKd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="6"/>
+                    <tabBarItem key="tabBarItem" title="Foto" image="second" id="6"/>
                     <connections>
                         <outlet property="btnSend" destination="YJU-ZV-Odv" id="GYk-pD-3vP"/>
                         <outlet property="imageView" destination="TbK-ys-cb8" id="8HG-Gz-3qs"/>
@@ -250,13 +360,16 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Chat" id="Q6s-gg-WwR"/>
                     <connections>
+                        <outlet property="btnHunter" destination="4sd-KR-eK0" id="U1Y-gI-HqT"/>
+                        <outlet property="btnLeader" destination="9UE-Hs-zQu" id="6P2-zM-K9T"/>
+                        <outlet property="btnPrey" destination="BBK-9N-hgN" id="qIV-PW-BuV"/>
                         <outlet property="txtChatInput" destination="Im9-nI-4eu" id="cKH-6S-EN0"/>
                         <outlet property="txtChatbox" destination="F1I-JT-pYq" id="4Dn-0r-0SQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jD0-ew-cU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1127" y="182"/>
+            <point key="canvasLocation" x="598" y="402"/>
         </scene>
         <!--Login Screen-->
         <scene sceneID="3Yx-i5-ltG">
@@ -369,8 +482,7 @@
                     <connections>
                         <outlet property="txtPassword" destination="reP-qH-Xo3" id="7Nc-sh-edb"/>
                         <outlet property="txtUser" destination="PoN-Ut-M8k" id="BN6-Yw-NNL"/>
-                        <segue destination="4" kind="modal" identifier="preySegue" id="ouT-zF-8BW"/>
-                        <segue destination="nO5-BG-tHp" kind="modal" identifier="hunterSegue" id="aDM-x8-vYS"/>
+                        <segue destination="4" kind="modal" identifier="loginSegue" id="ouT-zF-8BW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGy-zH-Nqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -406,12 +518,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p23-8W-Kb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="583" y="-1643"/>
+            <point key="canvasLocation" x="598" y="-1585"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController id="4" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tabs" id="4" customClass="TabController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -419,11 +531,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
-                        <segue destination="oQR-uf-Fba" kind="relationship" relationship="viewControllers" id="TK4-9a-4hy"/>
-                        <segue destination="rx2-Cg-1bt" kind="relationship" relationship="viewControllers" id="PGi-MA-97N"/>
-                        <segue destination="JrT-xS-lSl" kind="relationship" relationship="viewControllers" id="Jpj-db-05w"/>
+                        <segue destination="rx2-Cg-1bt" kind="relationship" relationship="viewControllers" id="y37-Pi-okj"/>
+                        <segue destination="3" kind="relationship" relationship="viewControllers" id="h0t-0a-ZR8"/>
+                        <segue destination="3aS-2b-Zhm" kind="relationship" relationship="viewControllers" id="BpB-S1-de5"/>
+                        <segue destination="oQR-uf-Fba" kind="relationship" relationship="viewControllers" id="XsD-47-NE8"/>
+                        <segue destination="DKI-qv-FJ2" kind="relationship" relationship="viewControllers" id="f4l-9K-Caw"/>
                         <segue destination="SZm-By-h63" kind="relationship" relationship="viewControllers" id="MJd-8n-FkW"/>
+                        <segue destination="8cR-hP-O3T" kind="relationship" relationship="viewControllers" id="bfb-e5-Ivv"/>
+                        <segue destination="JrT-xS-lSl" kind="relationship" relationship="viewControllers" id="EXe-GN-GNJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -470,8 +585,28 @@
                 <relationship kind="action" name="btnLeader:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="btnPrey:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="chatInputEnd:"/>
+                <relationship kind="outlet" name="btnHunter" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnLeader" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnPrey" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="txtChatInput" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtChatbox" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="HunterFotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HunterFotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnPhoto:"/>
+                <relationship kind="action" name="btnPicker:"/>
+                <relationship kind="action" name="btnSend:"/>
+                <relationship kind="outlet" name="btnSend" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="segment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="InfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="txtInfo" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="LogViewController" superclassName="UIViewController">
@@ -500,6 +635,18 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="PreyChatViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreyChatViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnHunter:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="btnLeader:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="chatInputEnd:"/>
+                <relationship kind="outlet" name="btnHunter" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnLeader" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="txtChatInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtChatbox" candidateClass="UITextView"/>
+            </relationships>
+        </class>
         <class className="SecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SecondViewController.h"/>
             <relationships>
@@ -509,6 +656,9 @@
                 <relationship kind="outlet" name="btnSend" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
             </relationships>
+        </class>
+        <class className="TabController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabController.h"/>
         </class>
         <class className="TaskViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskViewController.h"/>

@@ -15,6 +15,11 @@
 @synthesize playerID;
 @synthesize role;
 @synthesize lastTask;
+@synthesize taskLongitude;
+@synthesize taskLatitude;
+@synthesize taskDescription;
+@synthesize taskID;
+@synthesize approved;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

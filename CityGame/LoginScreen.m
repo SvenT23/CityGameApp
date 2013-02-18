@@ -17,8 +17,7 @@
 @end
 
 @implementation LoginScreen
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -26,14 +25,12 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -62,9 +59,9 @@
                          options:kNilOptions
                          error:&error];
         
-        //Houdt de waarden bij in globale waarden
+        //Houdt de waarden bij in globale waarden voor de rest van de app
         
-        appDelegate.gameID = [json objectForKey:@"gameID"];     //..to write
+        appDelegate.gameID = [json objectForKey:@"gameID"];
         NSLog(@"gameID: %@",appDelegate.gameID);
         appDelegate.intervalHunter = [json objectForKey:@"intervalHunter"];
         NSLog(@"interval jager: %@",appDelegate.intervalHunter);
@@ -74,18 +71,18 @@
         NSLog(@"playerID: %@",appDelegate.playerID);
         appDelegate.role = [json objectForKey:@"role"];
         NSLog(@"role: %@",appDelegate.role);
+        appDelegate.approved = @"false";
     } else {
         [LogViewController logMethodDuration:9 :error.description];
         NSLog(@"error: %@", error);
     }
     
     // timen hoe lang het duurde om de inlogdata te versturen naar de server
-    NSDate *methodEnd = [NSDate date];
-    NSTimeInterval executionTime = [methodEnd timeIntervalSinceDate:methodStart];
+    NSTimeInterval executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
     [LogViewController logMethodDuration:executionTime :@"login"];
     
     if(appDelegate.playerID!=NULL){
-        [self performSegueWithIdentifier: @"segueGo" sender: self];
+        [self performSegueWithIdentifier: @"loginSegue" sender: self];
     }else {
         _txtUser.text = @"";
         _txtPassword.text = @"";
@@ -94,6 +91,7 @@
 
 -(NSString*) sha1:(NSString*)input
 {
+    //encrypteren naar sha1
     const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length:input.length];
     

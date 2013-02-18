@@ -1,24 +1,28 @@
 //
-//  SecondViewController.m
+//  HunterFotoViewController.m
 //  CityGame
 //
-//  Created by Wim on 15/12/12.
-//  Copyright (c) 2012 Wim. All rights reserved.
+//  Created by Sven Timmermans on 7/02/13.
+//  Copyright (c) 2013 Wim. All rights reserved.
 //
 
+#import "HunterFotoViewController.h"
 #import "AppDelegate.h"
 #import "LogViewController.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
-#import "SecondViewController.h"
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"//custom album
 #import "NSDataAdditions.h"
-@interface SecondViewController ()
+
+@interface HunterFotoViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation HunterFotoViewController
+
 @synthesize imageView=_imageView;
+@synthesize btnSend=_btnSend;
+@synthesize segment=_segment;
 @synthesize library;
 
 - (void)viewDidLoad
@@ -36,8 +40,9 @@
 
 - (void)viewDidUnload {
     [self setImageView:nil];
-    [self setBtnSend:nil];
     self.library = nil;
+    [self setSegment:nil];
+    [self setBtnSend:nil];
     [super viewDidUnload];
 }
 
@@ -79,10 +84,10 @@
     }
 }
 
-
 - (IBAction)btnSend:(id)sender {
     NSDate *methodStart = [NSDate date];
     
+    // De juiste gegevens ophalen om mee door te sturen
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSNumber *player = appDelegate.playerID;
     
@@ -93,12 +98,28 @@
     NSTimeInterval executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
     [LogViewController logMethodDuration:executionTime :@"foto converteren"];
     
+    NSString *group;
+    NSString *prey;
+    
+    if(_segment.selectedSegmentIndex==0){
+        group = @"FALSE";
+        prey = @"FALSE";
+    }else if(_segment.selectedSegmentIndex==1){
+        group = @"TRUE";
+        prey = @"FALSE";
+        NSLog(@"test: %@, prey: %@", group, prey);
+    } else{
+        group= @"FALSE";
+        prey = @"TRUE";
+        NSLog(@"test: %@, prey: %@", group, prey);
+    }
+    
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://webservice.citygamephl.be/CityGameWS/resources/generic/sendPhoto"]];
     [request setPostValue:player forKey:@"playerID"];
     [request setPostValue:task forKey:@"taskID"];
     [request setPostValue:photo forKey:@"photo"];
-    [request setPostValue:FALSE forKey:@"groupPhoto"];
-    [request setPostValue:FALSE forKey:@"photoPrey"];
+    [request setPostValue:group forKey:@"groupPhoto"];
+    [request setPostValue:prey forKey:@"photoPrey"];
     [request setPostValue:appDelegate.role forKey:@"roleName"];
     
     
@@ -115,13 +136,12 @@
         NSLog(@"error: %@", error);
         [LogViewController logMethodDuration:9 :error.description];
     }
-    
     executionTime = [[NSDate date] timeIntervalSinceDate:methodStart];
     [LogViewController logMethodDuration:executionTime :@"Totaal foto doorsturen"];
     
 }
 
-//afbeelding naar string converteren
+//foto naar string converteren
 -(NSString *)getStringFromImage:(UIImage *)image{
 	if(image){
         //kwaliteit van foto kleiner maken
@@ -165,7 +185,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             }];
         
         [picker dismissModalViewControllerAnimated:NO];
-
+        
     }
 }
 
